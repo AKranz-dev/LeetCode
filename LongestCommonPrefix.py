@@ -123,7 +123,7 @@ class Solution:
             for letter in shortestWord:
                 for word in strs:
                     print("Checking if {} in {} matches {} in {}".format(letter,shortestWord,word[shortestWord.index(letter)],word))
-                    if letter == word[shortestWord.index(letter)]:  #Looks for the first occurence of the letter in the shortest word.
+                    if letter == word[shortestWord.index(letter)]:  #Looks for the first occurence of the letter in the shortest word. Need to use the dictionary I made in ValidParenthesis to keep a running track where the letters occur in the word.
                         i=1
                         print("it does!")
 
