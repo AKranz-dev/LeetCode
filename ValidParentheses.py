@@ -119,12 +119,6 @@ class Solution:
 
 
 
-
-
-
-
-
-
 mySolution = Solution()
 s="([])"
 print(mySolution.isValid(s))
@@ -147,3 +141,7 @@ print(mySolution.isValid(s))
 
 #I dont think it will work if s="([)]" - it would simply add bother openers to the list and then remove them.
 #The stack method I described is essentially a method to keep a count of all the openers and and count of all the closers and check if their equal. (With the additional check to make sure closers come after openers)
+#What I also need to check if that an opening [ bracket did not come before the subsequent closing parenthesis. To solve s="([)]".
+#No I actually need to check that a bracket of another type, either [ or {, either open or closed, is not directly in between two parentheses. For example, ([) or (])
+    #For each symbol in s (except the first and last symbol), check the value at the -1 and +1 index locaiton of that symbol
+    #If -1 is an openeing symbol AND +1 is a closing symbol, return False. This will catch {[}, or ([), or [(]
