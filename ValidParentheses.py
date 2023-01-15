@@ -36,6 +36,12 @@ class Solution:
                 currentOpenParenthLocation=s.index(letter,currentOpenParenthLocation)+1 #takes the value of the index of the last detected parenthesis, and adds one. Start searching from this location.
                 openParenthesisCounter+=1
 
+                #If the letter is not the first or last in the list
+                if s.index(letter) > 0 and s.index(letter) < len(s)-1:
+                    #Checks if the next letter is a closing bracket of the opposite type
+                    if s[s.index(letter)+1] == "}" or s[s.index(letter)+1] == "]":
+                        return False
+
             #Looks for closing brackets, captures index location with key being it's symbol and a number counter.
             if letter == ")":
                 symbolDict[letter+str(closedParenthesisCounter)]=s.index(letter,currentClosedParenthLocation)
@@ -58,6 +64,12 @@ class Solution:
                 symbolDict[letter+str(openBracketCounter)]=s.index(letter,currentOpenBracketLocation)
                 currentOpenBracketLocation=s.index(letter,currentOpenBracketLocation)+1 #takes the value of the index of the last detected parenthesis, and adds one. Start searching from this location.
                 openBracketCounter+=1
+
+                #If the letter is not the first or last in the list
+                if s.index(letter) > 0 and s.index(letter) < len(s)-1:
+                    #Checks if the next letter is a closing bracket of the opposite type
+                    if s[s.index(letter)+1] == "}" or s[s.index(letter)+1] == ")":
+                        return False
 
             #Looks for closing brackets, captures index location with key being it's symbol and a number counter.
             if letter == "]":
@@ -82,6 +94,13 @@ class Solution:
                 currentOpenCurlyLocation=s.index(letter,currentOpenCurlyLocation)+1 #takes the value of the index of the last detected parenthesis, and adds one. Start searching from this location.
                 openCurlyCount+=1
 
+                #If the letter is not the first or last in the list
+                if s.index(letter) > 0 and s.index(letter) < len(s)-1:
+                    #Checks if the next letter is a closing bracket of the opposite type
+                    if s[s.index(letter)+1] == "]" or s[s.index(letter)+1] == ")":
+                        return False
+
+
             #Looks for closing brackets, captures index location with key being it's symbol and a number counter.
             if letter == "}":
                 symbolDict[letter+str(closedCurlyCount)]=s.index(letter,currentClosedCurlyLocation)
@@ -97,7 +116,19 @@ class Solution:
                 else:
                     return False
 
-        
+            
+            # #If the letter is not the first or last in the list
+            # if s.index(letter) > 0 and s.index(letter) < len(s)-1:
+            #     #Checks if symbols at -1 and +1 index are opening and closing respectively - and that the letter in the middle is not the same type - curlys
+            #     if s[s.index(letter)-1] == "{" and s[s.index(letter)+1] == "}" and letter != "{" and letter !="}":
+            #         return False
+            #     #Checks if symbols at -1 and +1 index are opening and closing respectively - and that the letter in the middle is not the same type - brakcets
+            #     elif s[s.index(letter)-1] == "[" and s[s.index(letter)+1] == "]" and letter != "[" and letter !="]":
+            #         return False
+            #     #Checks if symbols at -1 and +1 index are opening and closing respectively - and that the letter in the middle is not the same type - parenthesis
+            #     elif s[s.index(letter)-1] == "(" and s[s.index(letter)+1] == ")" and letter != "(" and letter !=")":
+            #         return False
+
         
         if openParenthesisCounter == closedParenthesisCounter and openBracketCounter == closedBracketCounter and openCurlyCount == closedCurlyCount:
             return True
@@ -111,16 +142,8 @@ class Solution:
 
 
 
-
-
-
-
-
-
-
-
 mySolution = Solution()
-s="([])"
+s="[([]])"
 print(mySolution.isValid(s))
 
 
@@ -144,4 +167,21 @@ print(mySolution.isValid(s))
 #What I also need to check if that an opening [ bracket did not come before the subsequent closing parenthesis. To solve s="([)]".
 #No I actually need to check that a bracket of another type, either [ or {, either open or closed, is not directly in between two parentheses. For example, ([) or (])
     #For each symbol in s (except the first and last symbol), check the value at the -1 and +1 index locaiton of that symbol
-    #If -1 is an openeing symbol AND +1 is a closing symbol, return False. This will catch {[}, or ([), or [(]
+    #If -1 is an openeing symbol AND +1 is a closing symbol, return False. This will catch {[}, or ([), or [(]. 
+    #However, it doesnt account for this --> (()) - so they key is to make sure that -1 and +1 are not the same symbol as the one being checked. So that (()) passes but ([) fails and returns 'False'.
+
+    #Where should I add this check? Outside of the other checks?
+
+
+
+
+
+#1.14
+#90/92 test cases passed
+#[([]]) is failing. Perhaps instead of checking for mating symbols at -1 and +1 index location of the letter, instead just determine if it's an opening or closing symbol and check for that.
+#Perhaps each time we see an opening symbol (we make sure its not the first or last) and then we check if symbol at the +1 index location is not a closing bracket of the oother types such as } or ]. If so, return false.
+#I think the real issue here is that we need to validate nested parenthesis - in that if there is an opening symbol, there should be even number of opening and closing symbols up until the closing symbol of the original type.
+#[([]]) in this example, the number of opening symbols does not equal the number of closing symbols in 2 places
+#How to code:
+    #If letter is an opening symbol, for each letter in s starting at the index position of the current letter, keep track of number of opening and closing symbols until you find the closing smybol of the same type. 
+    #Compare the number of opening and closing symbols and check if they're equal. If not, return False.
