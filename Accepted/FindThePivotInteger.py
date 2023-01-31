@@ -22,5 +22,5 @@ class Solution:
 
 
 s = Solution()
-n = 4
+n = 8
 print(s.pivotInteger(n))
