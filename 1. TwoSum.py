@@ -4,6 +4,7 @@
 
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
+
         
 
 #==========================================================================================================   
@@ -57,7 +58,6 @@ class Solution:
                 
                 #print("Checking if {} plus {} matches the target".format(number,nums[currentNumberIndex + checkIndex]))
                 if number + nums[currentNumberIndex + checkIndex] == target:
-
                     returnList.append(currentNumberIndex)
                     returnList.append(currentNumberIndex + checkIndex)
                     return returnList
@@ -66,6 +66,29 @@ class Solution:
                         checkIndex = 1
                     else:
                         checkIndex += 1
+
+
+
+
+
+
+
+#Alternative solution that doesnt do well
+        # counter = 0
+        # indexList = []
+        # for num in nums:
+        #     for item in nums:
+        #         if nums.index(num) == nums.index(item) and counter == 0:
+        #             continue
+        #         counter =1
+        #         if num+item == target:
+        #             indexList.append(nums.index(num))
+        #             indexList.append(nums.index(item))
+        #             return indexList
+
+
+
+
 
 mySolution = Solution()
 
