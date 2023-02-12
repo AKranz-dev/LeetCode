@@ -17,7 +17,6 @@ class Solution:
         cat = ""
         for value in valueList:
             cat+=str(value)
-
         cat = int(cat,2)
         return cat
 
