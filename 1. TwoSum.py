@@ -46,26 +46,26 @@ class Solution:
 #I could look into splitting the list into smaller lists and processing concurrently.
 #Or I could tell it to first look at the target and rule out any numbers that dont make sense adding up.
 
-        numsLength = len(nums)
-        returnList = []
-        checkIndex = 1
-        for number in nums:
-            checksRemaining = (numsLength-1)-nums.index(number)
-            for step in range(0,checksRemaining):
-                #print("The number is {} and this is check number {} out of {}".format(number, step, numsToCheck))
+        # numsLength = len(nums)
+        # returnList = []
+        # checkIndex = 1
+        # for number in nums:
+        #     checksRemaining = (numsLength-1)-nums.index(number)
+        #     for step in range(0,checksRemaining):
+        #         #print("The number is {} and this is check number {} out of {}".format(number, step, numsToCheck))
                 
-                currentNumberIndex = nums.index(number)
+        #         currentNumberIndex = nums.index(number)
                 
-                #print("Checking if {} plus {} matches the target".format(number,nums[currentNumberIndex + checkIndex]))
-                if number + nums[currentNumberIndex + checkIndex] == target:
-                    returnList.append(currentNumberIndex)
-                    returnList.append(currentNumberIndex + checkIndex)
-                    return returnList
-                else:
-                    if currentNumberIndex + checkIndex == numsLength-1:
-                        checkIndex = 1
-                    else:
-                        checkIndex += 1
+        #         #print("Checking if {} plus {} matches the target".format(number,nums[currentNumberIndex + checkIndex]))
+        #         if number + nums[currentNumberIndex + checkIndex] == target:
+        #             returnList.append(currentNumberIndex)
+        #             returnList.append(currentNumberIndex + checkIndex)
+        #             return returnList
+        #         else:
+        #             if currentNumberIndex + checkIndex == numsLength-1:
+        #                 checkIndex = 1
+        #             else:
+        #                 checkIndex += 1
 
 
 
@@ -88,11 +88,47 @@ class Solution:
 
 
 
+        #Antoher solution that may work okay, but needs to be fixed to handle negative numbers
+        # numList = []
+        # winnerList = []
+        # finalList = []
+
+        # for num in nums:
+        #     if num <= target:
+        #         numList.append(num)
+        
+        # numList.sort(reverse=True)
+
+        # for num in numList:
+        #     diff = target - num
+        #     if diff in numList:
+        #         winnerList.append(diff)
+        #         winnerList.append(num)
+        #         break
+        
+
+        # diffIndex = nums.index(diff)
+        # print(diffIndex)
+        # numsIndex = nums.index(num)
+        # print(numsIndex)
+        
+        # if diffIndex == numsIndex:
+        #     finalList.append(nums.index(diff))
+        #     finalList.append(nums.index(num,diffIndex+1))
+        # else:
+        #     finalList.append(nums.index(diff))
+        #     finalList.append(nums.index(num))
+        # return finalList
+        
+
+
+
+
 
 
 mySolution = Solution()
 
-nums = [3,2,4]
+nums = [3,3]
 target = 6
 print(mySolution.twoSum(nums, target))
 

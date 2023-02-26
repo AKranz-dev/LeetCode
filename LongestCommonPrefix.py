@@ -159,53 +159,53 @@ class Solution:
 
 #Different approach, only passing 97/124
         
-        # wordLength = 50000
-        # letterList = []
-        # counter = 0
-        # indexCounter = 0
-        # countList = []
-        # shortestPrefix = 50000
-        # returnList = []
+        wordLength = 50000
+        letterList = []
+        counter = 0
+        indexCounter = 0
+        countList = []
+        shortestPrefix = 50000
+        returnList = []
 
-        # for str in strs:
-        #     if len(str) < wordLength:    
-        #         wordLength = len(str)
-        #         shortestWord = str
-        # print(shortestWord)
-        # print(wordLength)
+        for str in strs:
+            if len(str) < wordLength:    
+                wordLength = len(str)
+                shortestWord = str
+        print(shortestWord)
+        print(wordLength)
         
-        # if len(strs) == 1:
-        #     return shortestWord
+        if len(strs) == 1:
+            return shortestWord
 
-        # for word in strs:
-        #         if word != shortestWord:
-        #             print("Now checking word {}...".format(word))
-        #             indexCounter = 0
-        #             for i in range(0,wordLength):
-        #                 print("Checking if {} matches {}...".format(word[indexCounter],shortestWord[indexCounter]))
-        #                 if word[indexCounter] == shortestWord[indexCounter]:
-        #                     letterList.append(shortestWord[indexCounter])
-        #                     indexCounter+=1
-        #                 else:
-        #                     letterList.append("#")
-        #                     break
-        #             letterList.append("#")
+        for word in strs:
+                if word != shortestWord:
+                    print("Now checking word {}...".format(word))
+                    indexCounter = 0
+                    for i in range(0,wordLength):
+                        print("Checking if {} matches {}...".format(word[indexCounter],shortestWord[indexCounter]))
+                        if word[indexCounter] == shortestWord[indexCounter]:
+                            letterList.append(shortestWord[indexCounter])
+                            indexCounter+=1
+                        else:
+                            letterList.append("#")
+                            break
+                    letterList.append("#")
         
-        # print(letterList)
+        print(letterList)
 
-        # for item in letterList:
+        for item in letterList:
             
-        #     if item != "#":
-        #         countList.append(item)
-        #     else:
-        #         print("Checking if the length of curent prefix {} is less than {}".format(len(countList),shortestPrefix))
-        #         if len(countList) < shortestPrefix and len(countList) !=0:
-        #             shortestPrefix = len(countList)
-        #             returnList.clear()
-        #             for item in countList:
-        #                 returnList.append(item)
-        #         countList.clear()
-        # return "".join(returnList)
+            if item != "#":
+                countList.append(item)
+            else:
+                print("Checking if the length of curent prefix {} is less than {}".format(len(countList),shortestPrefix))
+                if len(countList) < shortestPrefix and len(countList) !=0:
+                    shortestPrefix = len(countList)
+                    returnList.clear()
+                    for item in countList:
+                        returnList.append(item)
+                countList.clear()
+        return "".join(returnList)
         
 
      
