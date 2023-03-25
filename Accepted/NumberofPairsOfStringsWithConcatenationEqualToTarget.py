@@ -1,16 +1,17 @@
 class Solution:
     def numOfPairs(self, nums: list[str], target: str) -> int:
         counter = 0
-        
-        for num in nums:
-            for item in nums:
-                if num + item == target:
+    
+        for i in range(0,len(nums)):
+            for x in range(0,len(nums)):
+                if nums[i] + nums[x] == target and i != x:
                     counter +=1
         return counter
+
     
 
 
 s = Solution()
-nums = ["123","4","12","34"]
-target = "1234"
+nums = ["777","7","77","77"]
+target = "7777"
 print(s.numOfPairs(nums,target))

@@ -11,17 +11,30 @@ class Solution:
         #     counter+=2
     
 
+        # while counter <= len(arr):
+        #     for i in range (0,len(arr),counter):
+        #         for item in arr[0::counter]:
+        #             print("Adding {} to {}".format(item,runningCount))
+        #             runningCount += item
+        #     counter+=2
+        #     print(runningCount)
+
+        
+        # if len(arr)%2 == 0:
+        #     maxSubArrayLength = len(arr)-1
+        # else:
+        #     maxSubArrayLength = len(arr)
+
         while counter <= len(arr):
-            for i in range (0,len(arr),counter):
-                for item in arr[0::counter]:
-                    runningCount += item
+            for item in arr[0::counter]:
+                print("Adding {} to {}".format(item,runningCount))
+                runningCount += item
             counter+=2
             print(runningCount)
-
-
-        
+            runningCount = 0
 
         
+
 
 
 
