@@ -63,7 +63,7 @@ class Solution:
         return returnList
 
 
-#Passing 76/77 testcases. The current issue is that there are two same numbers in the input (6144). On line 19, I store the binary value of 6144 into a dictionary using '6144' as the key. The second time 644 comes around, it gets overwritten.
+#Passing 76/77 testcases. The current issue is that there are two same numbers in the input (6144). On line 19, I store the binary value of 6144 into a dictionary using '6144' as the key. The second time 6144 comes around, it gets overwritten.
 
 
 
